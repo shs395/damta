@@ -27,6 +27,16 @@ class SettingPage extends StatelessWidget {
             //   }
             // ),
             ListTile(
+              title: Text(
+                '초기화',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                ),
+              ),
+              // contentPadding: EdgeInsetsGeometry
+            ),
+            ListTile(
               title: Text('흡연 기록 초기화'),
               onTap: () {
                 showDialog(
@@ -169,6 +179,15 @@ class SettingPage extends StatelessWidget {
                 );
               }
             ),
+            // ListTile(
+            //   title: Text(
+            //     '문의하기',
+            //     style: TextStyle(
+            //       fontWeight: FontWeight.w700,
+            //       fontSize: 18,
+            //     ),
+            //   ),
+            // ),
             // ListTile(
             //   title: Text('개인정보처리방침'),
             // ),

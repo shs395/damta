@@ -41,7 +41,7 @@ List<charts.Series<DateTime, String>> createChartData(List<DateTime> dateTimeLis
     return [
       new charts.Series<DateTime, String>(
         id: '',
-        colorFn: (_, __) => charts.ColorUtil.fromDartColor(appTheme.mainGreen),
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Color(0xFF145374)),
         domainFn: (DateTime dateTime, _) => DateFormat.Md().format(dateTime),
         measureFn: (DateTime dateTime, _) {
           int count = 0;
@@ -58,6 +58,31 @@ List<charts.Series<DateTime, String>> createChartData(List<DateTime> dateTimeLis
       )
     ];
   }
+
+
+String formatDuration(Duration d) {
+  var seconds = d.inSeconds;
+  final days = seconds~/Duration.secondsPerDay;
+  seconds -= days*Duration.secondsPerDay;
+  final hours = seconds~/Duration.secondsPerHour;
+  seconds -= hours*Duration.secondsPerHour;
+  final minutes = seconds~/Duration.secondsPerMinute;
+  seconds -= minutes*Duration.secondsPerMinute;
+
+  final List<String> tokens = [];
+  if (days != 0) {
+    tokens.add('${days}일');
+  }
+  if (tokens.isNotEmpty || hours != 0){
+    tokens.add('${hours}시간');
+  }
+  if (tokens.isNotEmpty || minutes != 0) {
+    tokens.add('${minutes}분');
+  }
+  tokens.add('${seconds}초');
+
+  return tokens.join(' ');
+}
 
 
   // charts.MaterialPalette.blue.shadeDefault,

@@ -11,13 +11,13 @@ class CustomAppbar extends AppBar {
         fontSize: 25
       )
     ),
-    backgroundColor: Colors.white,
+    backgroundColor: appTheme.white,
     titleSpacing: 30, //title 
     centerTitle: false,
     automaticallyImplyLeading: false, // 뒤로가기 자동생성 방지
     elevation: 0, // appbar 아래 그림자
     actions: [
-      TopInfoBar()
+      // TopInfoBar()
     ],
   );
 }

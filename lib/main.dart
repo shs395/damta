@@ -66,6 +66,7 @@ class DamTa extends StatelessWidget {
         ChangeNotifierProvider<UserInfoViewModel>(create: (_) => UserInfoViewModel()),
       ],
       child: MaterialApp(
+        theme: ThemeData(fontFamily: 'NotoSansKR'),
         debugShowCheckedModeBanner: false,
         title: '담타',
         initialRoute: '/',

@@ -13,8 +13,8 @@ class SmokingRecordListViewModel with ChangeNotifier {
     hashCode: getHashCode,
   );
   
-  DateTime get lastSmokingTime => _lastSmokingTime;
-  late DateTime _lastSmokingTime = DateTime(2010, 1, 1);
+  DateTime? get lastSmokingTime => _lastSmokingTime;
+  DateTime? _lastSmokingTime = null;
 
   SmokingRecordListViewModel() {
     _smokingRecordRepository = SmokingRecordRepository();
@@ -114,10 +114,17 @@ class SmokingRecordListViewModel with ChangeNotifier {
 
   Future<void> getLastSmokingTime() async {
     List<SmokingRecord> _smokingRecordList = await getSmokingRecordList();
-    _lastSmokingTime = DateTime(2010, 1, 1);
-    if(_smokingRecordList != null) {
+    _lastSmokingTime = null;
+    late DateTime tempLastSmokingTime;
+    print(_smokingRecordList);
+    if(_smokingRecordList.length != 0) {
+      print(_smokingRecordList);
+      tempLastSmokingTime = _smokingRecordList[0].dateTime;
       _smokingRecordList.forEach((element) {
-        if(_lastSmokingTime.difference(element.dateTime).isNegative == true) {
+        if(tempLastSmokingTime.difference(element.dateTime).isNegative == true) {
+          tempLastSmokingTime = element.dateTime;
+          _lastSmokingTime = element.dateTime;
+        } else if(tempLastSmokingTime == element.dateTime) {
           _lastSmokingTime = element.dateTime;
         }
       });

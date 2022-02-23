@@ -17,8 +17,11 @@ class _HomeSmokinglistWidgetState extends State<HomeSmokingListWidget> {
       width: MediaQuery.of(context).size.width * 0.92,
       height: MediaQuery.of(context).size.height * 0.23,
       decoration: BoxDecoration(
-        color: appTheme.homeSmokingListWidgetBackgroundColor,
-        borderRadius: BorderRadius.circular(25),
+        // color: appTheme.homeSmokingListWidgetBackgroundColor,
+        // color: Color(0xFFE7E6E1),
+        // color: Color(0xFFF7F6E7),
+        color: Color(0xFFF8F5F1),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -28,7 +31,8 @@ class _HomeSmokinglistWidgetState extends State<HomeSmokingListWidget> {
             child: Container(
               padding: EdgeInsetsDirectional.fromSTEB(15, 10, 0, 0),
               decoration: BoxDecoration(
-                color: appTheme.mainGrey,
+                // color: appTheme.mainGrey,
+                // color: Color(0xFFE7E6E1),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: Center(
@@ -40,7 +44,8 @@ class _HomeSmokinglistWidgetState extends State<HomeSmokingListWidget> {
             flex: 5,
             child: Container(
               decoration: BoxDecoration(
-                color: appTheme.mainGrey,
+                // color: appTheme.mainGrey,
+                // color: Color(0xFFE7E6E1),
                 borderRadius: BorderRadius.circular(25),
               ),
               child: BarChart(dateTimeList: getSevenDaysFromNow())

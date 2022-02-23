@@ -1,7 +1,9 @@
 import 'package:damta/common/theme.dart';
 import 'package:damta/data/models/smoking_record.dart';
+import 'package:damta/utilities/ad_helper.dart';
 import 'package:damta/view/screens/create_smoking_record_page.dart';
 import 'package:damta/view/widgets/custom_appbar.dart';
+import 'package:damta/view/widgets/home_date_widget.dart';
 import 'package:damta/view/widgets/home_info_widget.dart';
 import 'package:damta/view/widgets/home_smoking_list_widget.dart';
 import 'package:damta/view_model/smoking_record_list_view_model.dart';
@@ -13,8 +15,23 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/src/provider.dart';
 
-class HomePage extends StatelessWidget {
+// class HomePage extends StatelessWidget {
+//   const HomePage({ Key? key }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+    
+//   }
+// }
+
+class HomePage extends StatefulWidget {
   const HomePage({ Key? key }) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +51,8 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     HomeInfoWidget(),
+                    Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 5, 15, 20)),
+                    HomeDateWidget(),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 5, 15, 20)),
                     HomeSmokingListWidget(),
                     Spacer(),
@@ -122,7 +141,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           flex: 1,
-                        )
+                        ),
                         // Center(child: Text('s'),),
                         // FloatingActionButton.large(
                         //   child: Text('add now'),
@@ -147,7 +166,6 @@ class HomePage extends StatelessWidget {
                         // ),
                       ],
                     ),
-                    
                   ],
                 )
               )
