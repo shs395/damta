@@ -28,13 +28,16 @@ class appTheme {
   static const Color buttonMoreBackgrounColor = mainGreen;
   static const Color buttonMoreForegroundColor = white;
 
-  //home_info_widget
+  //home_smoking_info_widget
   static const Color homeInfoWidgetBackgroundColor = mainBeige;
   static const Color homeInfoWidgetUpwardIconColor = Color(0xFFEE6F57);
   // static const Color homeInfoWidgetDownwardIconColor = Color(0xFF00334E);
   // static const Color homeInfoWidgetDownwardIconColor = Color(0xFF4076ED);
   static const Color homeInfoWidgetDownwardIconColor = mainGreen;
   static const Color homeInfoWidgetSameIconColor = Colors.black;
+
+  //home_no_smoking_info_widget
+  static const Color homeNoSmokingInfoWidgetBackgroundColor = mainBeige;
 
   //home_date_widget
   static const Color homeDateWidgetBackgroundColor = mainBeige;

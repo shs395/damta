@@ -28,8 +28,6 @@ class _TopInfoBarState extends State<TopInfoBar> {
   Widget build(BuildContext context) {
     _smokingRecordListViewModel = Provider.of<SmokingRecordListViewModel>(context);
     _userInfoViewModel = Provider.of<UserInfoViewModel>(context);
-    print(_userInfoViewModel.userInfo.isStopSmoking);
-    print(_userInfoViewModel.userInfo.startStopSmokingDate);
     return Container(
       padding: EdgeInsets.only(right: 15),
       child: Center(

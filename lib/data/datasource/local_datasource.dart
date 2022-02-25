@@ -46,14 +46,9 @@ class LocalDataSource {
 
   Future<UserInfo> getUserInfo() async {
     var box = await Hive.openBox<UserInfo>('userInfo');
-    print(box.values);
-    print(box.values.runtimeType);
-    print(box.values.toList());
-    print(box.values.toList().runtimeType);
     if(box.values.isEmpty == true) {
       return UserInfo(false, null);
     } else {
-      print(box.values.elementAt(0));
       return box.values.elementAt(0);
     }
   }

@@ -4,7 +4,8 @@ import 'package:damta/utilities/ad_helper.dart';
 import 'package:damta/view/screens/create_smoking_record_page.dart';
 import 'package:damta/view/widgets/custom_appbar.dart';
 import 'package:damta/view/widgets/home_date_widget.dart';
-import 'package:damta/view/widgets/home_info_widget.dart';
+import 'package:damta/view/widgets/home_no_smoking_info_widget.dart';
+import 'package:damta/view/widgets/home_smoking_info_widget.dart';
 import 'package:damta/view/widgets/home_smoking_list_widget.dart';
 import 'package:damta/view_model/smoking_record_list_view_model.dart';
 import 'package:damta/view_model/user_info_view_model.dart';
@@ -50,7 +51,8 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsetsDirectional.fromSTEB(15, 20, 15, 20),
                 child: Column(
                   children: [
-                    HomeInfoWidget(),
+                    // _userInfoViewModel.userInfo.isStopSmoking ? HomeNoSmokingInfoWidget() : HomeSmokingInfoWidget(),
+                    HomeSmokingInfoWidget(),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 5, 15, 20)),
                     HomeDateWidget(),
                     Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 5, 15, 20)),

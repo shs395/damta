@@ -3,8 +3,8 @@ import 'package:damta/common/theme.dart';
 import 'package:damta/view_model/smoking_record_list_view_model.dart';
 import 'package:provider/src/provider.dart';
 
-class HomeInfoWidget extends StatelessWidget {
-  const HomeInfoWidget({ Key? key }) : super(key: key);
+class HomeSmokingInfoWidget extends StatelessWidget {
+  const HomeSmokingInfoWidget({ Key? key }) : super(key: key);
 
   List<Widget> getCountDifferenceWidget(int countDifference) {
     if(countDifference == 0) {

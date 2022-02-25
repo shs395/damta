@@ -92,7 +92,6 @@ class SmokingRecordListViewModel with ChangeNotifier {
   }
 
   int? getTodaySmokingCount() {
-    print(_smokingRecordLinkedHashMap[DateTime.now()]?.length);
     if(_smokingRecordLinkedHashMap[DateTime.now()]?.length == null) {
       return 0;
     } else {
@@ -116,9 +115,7 @@ class SmokingRecordListViewModel with ChangeNotifier {
     List<SmokingRecord> _smokingRecordList = await getSmokingRecordList();
     _lastSmokingTime = null;
     late DateTime tempLastSmokingTime;
-    print(_smokingRecordList);
     if(_smokingRecordList.length != 0) {
-      print(_smokingRecordList);
       tempLastSmokingTime = _smokingRecordList[0].dateTime;
       _smokingRecordList.forEach((element) {
         if(tempLastSmokingTime.difference(element.dateTime).isNegative == true) {

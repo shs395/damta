@@ -28,107 +28,34 @@ class _MainPageState extends State<MainPage> {
     SettingPage(),
   ];
 
-  List<BannerAd> bannerAdList = [];
-  List<bool> isBannerAdReadyList = [false, false, false, false, false];
-  List<String> bannerIdList= [ 
-    AdHelper.homeBannerAdUnitId,
-    AdHelper.calendarBannerAdUnitId,
-    AdHelper.statisticsBannerAdUnitId,
-    AdHelper.noSmokingBannerAdUnitId,
-    AdHelper.settingBannerAdUnitId,
-  ];
-
-
-  late BannerAd _homeBanner;
-  late BannerAd _calendarBanner;
-  late BannerAd _statisticsBanner;
-  late BannerAd _nosmokingBanner;
-  late BannerAd _settingBanner;
-
-  bool _isHomeBannerAdReady = false;
-  bool _isCalendarBannerAdReady = false;
-  bool _isStatisticsBannerAdReady = false;
-  bool _isNosmokingBannerAdReady = false;
-  bool _isSettingBannerAdReady = false;
+  late BannerAd _mainBannerAd;
+  bool _isMainBannerAdReady = false;
   
-  
-
-  // BannerAd makeBannerAd(int index) {
-  //   return BannerAd(
-  //     adUnitId: bannerIdList[index],
-  //     // adUnitId: AdHelper.bannerAdUnitId,
-  //     request: AdRequest(),
-  //     size: AdSize.banner,
-  //     listener: BannerAdListener(
-  //       onAdLoaded: (_) {
-  //         setState(() {
-  //           _isBannerAdReady = true;
-  //         });
-  //       },
-  //       onAdFailedToLoad: (ad, err) {
-  //         print('Failed to load a banner ad: ${err.message}');
-  //         _isBannerAdReady = false;
-  //         ad.dispose();
-  //       },
-  //     ),
-  //   );
-  // }
-
   @override
   void initState() {
-    for (int i = 0; i < 5; i++) {
-      bannerAdList.add( BannerAd(
-        adUnitId: bannerIdList[i],
-        // adUnitId: AdHelper.bannerAdUnitId,
-        request: AdRequest(),
-        size: AdSize.banner,
-        listener: BannerAdListener(
-          onAdLoaded: (_) {
-            setState(() {
-              isBannerAdReadyList[i] = true;
-            });
-          },
-          onAdFailedToLoad: (ad, err) {
-            print('Failed to load a banner ad: ${err.message}');
-            isBannerAdReadyList[i] = false;
-            ad.dispose();
-          },
-        ),
-      )
+    _mainBannerAd = BannerAd(
+      adUnitId: AdHelper.homeBannerAdUnitId,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            _isMainBannerAdReady = true;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          print('Failed to load a banner ad: ${err.message}');
+          _isMainBannerAdReady = false;
+          ad.dispose();
+        },
+      ),
     );
 
-      bannerAdList[i].load();
-    }
-    
-
-    // _bannerAd = BannerAd(
-    //   adUnitId: AdHelper.homeBannerAdUnitId,
-    //   // adUnitId: AdHelper.bannerAdUnitId,
-    //   request: AdRequest(),
-    //   size: AdSize.banner,
-    //   listener: BannerAdListener(
-    //     onAdLoaded: (_) {
-    //       setState(() {
-    //         _isBannerAdReady = true;
-    //       });
-    //     },
-    //     onAdFailedToLoad: (ad, err) {
-    //       print('Failed to load a banner ad: ${err.message}');
-    //       _isBannerAdReady = false;
-    //       ad.dispose();
-    //     },
-    //   ),
-    // );
-
-    // _bannerAd.load();
+    _mainBannerAd.load();
   }
 
   @override
   Widget build(BuildContext context) {
-    // isBannerAdReadyList.forEach((element) {
-    //   print(element.toString());
-    // });
-    print(bannerAdList[_screenIndex].adUnitId);
     return Scaffold(
       backgroundColor: appTheme.backgroundColor,
       body: Padding(
@@ -141,10 +68,9 @@ class _MainPageState extends State<MainPage> {
             ),
             Container(
               color: appTheme.backgroundColor,
-              // width: _bannerAd.size.width.toDouble(),
-              width: bannerAdList[_screenIndex].size.width.toDouble(),
-              height: bannerAdList[_screenIndex].size.height.toDouble(),
-              child: AdWidget(ad: bannerAdList[_screenIndex]),
+              width: _mainBannerAd.size.width.toDouble(),
+              height: _mainBannerAd.size.height.toDouble(),
+              child: AdWidget(ad: _mainBannerAd),
             )
           ],
         )
