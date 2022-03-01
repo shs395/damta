@@ -67,7 +67,9 @@ class appTheme {
   static const Color grey = Colors.grey;
 
   static const Color grey50 = Color(0xFFF2F4F6);
-  static const Color lightMainGreen = Color.fromRGBO(44, 92, 104, 0.3);
+  // static const Color lightMainGreen = Color.fromRGBO(44, 92, 104, 0.3);
+  //  static const Color lightMainGreen = Color.fromRGBO(20, 83, 116, 0.1);
+  static const Color lightMainGreen = Color(0xFFBCCBD4);
   static const Color test1 = Color.fromRGBO(92, 116, 140, 1);
   static const Color test2 = Color.fromRGBO(79, 123, 144, 1);
   static const Color test3 = Color.fromRGBO(73, 131, 126, 1);

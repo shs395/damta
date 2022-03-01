@@ -43,5 +43,9 @@ class UserInfoViewModel with ChangeNotifier {
     }
   }
 
+  // DateTime getDaysFromStopSmoking() {
+
+  // }
+
 
 }

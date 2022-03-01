@@ -14,6 +14,15 @@ List<DateTime> getSevenDaysFromNow() {
   return dateTimeList;
 }
 
+// 인풋 날짜 기준 7일 전
+List<DateTime> getSevenDaysFromDate(DateTime date) {
+  List<DateTime> dateTimeList = [];
+  for(int i = 6; i >= 0; i--) {
+    dateTimeList.add(date.subtract(Duration(days: i)));
+  }
+  return dateTimeList;
+}
+
 // 현재 날짜 기준으로 한 달 전
 List<DateTime> getOneMonthFromNow() {
   List<DateTime> dateTimeList = [];
@@ -32,6 +41,12 @@ List<DateTime> getThreeMonthsFromNow() {
   return dateTimeList;
 }
 
+// 한 달에 며칠 있는지
+int daysInMonth(DateTime date){
+  DateTime firstDayThisMonth = new DateTime(date.year, date.month, date.day);
+  DateTime firstDayNextMonth = new DateTime(firstDayThisMonth.year, firstDayThisMonth.month + 1, firstDayThisMonth.day);
+  return firstDayNextMonth.difference(firstDayThisMonth).inDays;
+}
 // 모든 날짜
 
 
@@ -58,6 +73,7 @@ List<charts.Series<DateTime, String>> createChartData(List<DateTime> dateTimeLis
       )
     ];
   }
+
 
 
 String formatDuration(Duration d) {

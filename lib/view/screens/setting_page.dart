@@ -1,4 +1,5 @@
 import 'package:damta/utilities/ad_helper.dart';
+import 'package:damta/utilities/setting_helper.dart';
 import 'package:damta/view/widgets/custom_appbar.dart';
 import 'package:damta/view_model/smoking_record_list_view_model.dart';
 import 'package:damta/view_model/user_info_view_model.dart';
@@ -6,12 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:damta/common/theme.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/src/provider.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:in_app_review/in_app_review.dart';
+
 
 class SettingPage extends StatelessWidget {
   const SettingPage({ Key? key }) : super(key: key);
+
+  // 메일 전송
+  
   
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
+    const String _groupChatUrl = 'https://open.kakao.com/o/gWeM6q0d';
+    const String _damtaChannel = 'https://pf.kakao.com/_zBLab';
     SmokingRecordListViewModel smokingRecordListViewModel = context.watch<SmokingRecordListViewModel>();
     UserInfoViewModel userInfoViewModel = context.watch<UserInfoViewModel>();
     return Scaffold(
@@ -179,15 +189,76 @@ class SettingPage extends StatelessWidget {
                 );
               }
             ),
-            // ListTile(
-            //   title: Text(
-            //     '문의하기',
-            //     style: TextStyle(
-            //       fontWeight: FontWeight.w700,
-            //       fontSize: 18,
-            //     ),
-            //   ),
-            // ),
+            ListTile(
+              title: Text(
+                '문의 및 개선사항',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                '메일로 문의하기',
+              ),
+              trailing: Icon(
+                Icons.open_in_new,
+                size: 20
+              ),
+              onTap: () {
+                SettingHelper.sendEmail(context);
+              },
+            ),
+            ListTile(
+              title: Text(
+                '카카오톡 단톡방 참여하기',
+              ),
+              trailing: Icon(
+                Icons.open_in_new,
+                size: 20
+              ),
+              onTap: () async {
+                if (!await launch(_groupChatUrl)) throw 'Could not launch $_groupChatUrl';
+              }
+            ),
+            ListTile(
+              title: Text(
+                '카카오톡 채널로 문의하기',
+              ),
+              trailing: Icon(
+                Icons.open_in_new,
+                size: 20
+              ),
+              onTap: () async {
+                if (!await launch(_damtaChannel)) throw 'Could not launch $_damtaChannel';
+              }
+            ),
+            ListTile(
+              title: Text(
+                '리뷰',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                '앱 리뷰하기',
+              ),
+              trailing: Icon(
+                Icons.open_in_new,
+                size: 20
+              ),
+              onTap: () {
+                final inAppReview = InAppReview.instance;
+                inAppReview.openStoreListing(
+                  appStoreId: '1610315100',
+                );
+              }
+            ),
+            
             // ListTile(
             //   title: Text('개인정보처리방침'),
             // ),

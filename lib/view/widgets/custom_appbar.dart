@@ -17,7 +17,7 @@ class CustomAppbar extends AppBar {
     automaticallyImplyLeading: false, // 뒤로가기 자동생성 방지
     elevation: 0, // appbar 아래 그림자
     actions: [
-      // TopInfoBar()
+      TopInfoBar()
     ],
   );
 }

@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'package:damta/data/models/smoking_record.dart';
 import 'package:damta/data/repository/smoking_record_repository.dart';
+import 'package:damta/utilities/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -109,6 +110,63 @@ class SmokingRecordListViewModel with ChangeNotifier {
       });
       return count;
     }
+  }
+
+  int getSmokinCountOfWeek(List<DateTime> week) {
+    int count = 0;
+    for(int i = 0; i < 7; i ++) {
+      count = count + getSmokingCount(week[i]);
+    }
+    return count;
+  }
+
+  int getSmokingCountOfMonth(int year, int month) {
+    DateTime standardDate = DateTime(year, month);
+    // print('standard date ${standardDate}');
+    int totalDays = daysInMonth(standardDate);
+    // print('totalDays : ${totalDays}');
+    List<DateTime> daysOfMonth = List<DateTime>.generate(totalDays, (i) => DateTime(year, month, i + 1));
+    int count = 0;
+    daysOfMonth.forEach((element) {
+      count = count + getSmokingCount(element);
+    });
+    return count;
+  }
+
+  int getMaxSmokingCountInSevenDays(List<DateTime> dateTimeList) {
+    int max = 0;
+    for(int i = 0; i < 7 ; i++) {
+      int temp = getSmokingCount(dateTimeList[i]);
+      if(temp > max) {
+        max = temp;
+      }
+    }
+    return max;
+  }
+
+  int getMaxSmokingCountInFourWeeks(List<List<DateTime>> dateTimeList) {
+    int max = 0;
+    for(int i = 0; i < 4; i++) { 
+      int temp = 0;
+      for(int j = 0; j < 7; j++) {
+        temp = temp + getSmokingCount(dateTimeList[i][j]);
+      }
+      if(temp > max) {
+        max = temp;
+      }
+    }
+    return max;
+  }
+
+  int getMaxSmokingCountInYear(int year) {
+    int max = 0;
+    for(int i = 0; i < 12; i++) {
+      int temp = getSmokingCountOfMonth(year, i+1);
+      if(temp > max) {
+        max = temp;
+      }
+    }
+    return max;
   }
 
   Future<void> getLastSmokingTime() async {

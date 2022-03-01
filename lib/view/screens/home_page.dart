@@ -3,10 +3,13 @@ import 'package:damta/data/models/smoking_record.dart';
 import 'package:damta/utilities/ad_helper.dart';
 import 'package:damta/view/screens/create_smoking_record_page.dart';
 import 'package:damta/view/widgets/custom_appbar.dart';
-import 'package:damta/view/widgets/home_date_widget.dart';
-import 'package:damta/view/widgets/home_no_smoking_info_widget.dart';
-import 'package:damta/view/widgets/home_smoking_info_widget.dart';
-import 'package:damta/view/widgets/home_smoking_list_widget.dart';
+import 'package:damta/view/widgets/home_page/home_no_smoking_health_info_widget.dart';
+import 'package:damta/view/widgets/home_page/home_no_smoking_info_widget.dart';
+import 'package:damta/view/widgets/home_page/home_smoking_date_widget.dart';
+import 'package:damta/view/widgets/home_page/home_smoking_info_widget.dart';
+import 'package:damta/view/widgets/home_page/home_smoking_chart_widget.dart';
+import 'package:damta/view/widgets/statistics_page/daily_bar_chart.dart';
+import 'package:damta/view/widgets/stop_smoking_page/stop_smoking_health_info_widget.dart';
 import 'package:damta/view_model/smoking_record_list_view_model.dart';
 import 'package:damta/view_model/user_info_view_model.dart';
 import 'package:flutter/material.dart';
@@ -16,14 +19,6 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/src/provider.dart';
 
-// class HomePage extends StatelessWidget {
-//   const HomePage({ Key? key }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-    
-//   }
-// }
 
 class HomePage extends StatefulWidget {
   const HomePage({ Key? key }) : super(key: key);
@@ -37,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     SmokingRecordListViewModel smokingRecordList = context.watch<SmokingRecordListViewModel>();
-    UserInfoViewModel _userInfoViewModel = Provider.of<UserInfoViewModel>(context);
+    UserInfoViewModel _userInfoViewModel = context.watch<UserInfoViewModel>();
     return Scaffold(
       appBar: CustomAppbar('홈'),
       backgroundColor: appTheme.backgroundColor,
@@ -51,12 +46,12 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsetsDirectional.fromSTEB(15, 20, 15, 20),
                 child: Column(
                   children: [
-                    // _userInfoViewModel.userInfo.isStopSmoking ? HomeNoSmokingInfoWidget() : HomeSmokingInfoWidget(),
-                    HomeSmokingInfoWidget(),
-                    Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 5, 15, 20)),
-                    HomeDateWidget(),
-                    Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 5, 15, 20)),
-                    HomeSmokingListWidget(),
+                    _userInfoViewModel.userInfo.isStopSmoking ? HomeNoSmokingInfoWidget() : HomeSmokingInfoWidget(),
+                    // HomeSmokingInfoWidget(),
+                    Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, MediaQuery.of(context).size.height * 0.02,)),
+                    _userInfoViewModel.userInfo.isStopSmoking ? StopSmokingHealthInfoWidget() : HomeDateWidget(),
+                    Padding(padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, MediaQuery.of(context).size.height * 0.02,)),
+                    _userInfoViewModel.userInfo.isStopSmoking ? Container() : DailyBarChart(),
                     Spacer(),
                     Row(
                       children: [

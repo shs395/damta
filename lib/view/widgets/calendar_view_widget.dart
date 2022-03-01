@@ -135,7 +135,7 @@ class _CalendarViewWidgetState extends State<CalendarViewWidget> {
                     return events.isNotEmpty ?  _buildEventsMarkerNum(events) : Container();
               },
             ),
-            daysOfWeekStyle: const DaysOfWeekStyle(), 
+            daysOfWeekHeight: 18
             // rowHeight: 30,
             
           ),

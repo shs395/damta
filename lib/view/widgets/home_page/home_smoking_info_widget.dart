@@ -14,7 +14,8 @@ class HomeSmokingInfoWidget extends StatelessWidget {
           '${countDifference}',
           style: TextStyle(
             fontSize: 30,
-            color: appTheme.homeInfoWidgetSameIconColor
+            // fontWeight: FontWeight.w500,
+            color: appTheme.homeInfoWidgetSameIconColor,
           )
         ),
         Icon(
@@ -29,6 +30,7 @@ class HomeSmokingInfoWidget extends StatelessWidget {
           '${countDifference}',
           style: TextStyle(
             fontSize: 30,
+            // fontWeight: FontWeight.w500,
             color: appTheme.homeInfoWidgetUpwardIconColor
           )
         ),
@@ -79,6 +81,7 @@ class HomeSmokingInfoWidget extends StatelessWidget {
                   '오늘',
                   style: TextStyle(
                     fontSize: 12,
+                    fontWeight: FontWeight.w500,
                     color: appTheme.mainGreen,
                   ),
                 ),
@@ -89,6 +92,7 @@ class HomeSmokingInfoWidget extends StatelessWidget {
                   '${smokingRecordListViewModel.getSmokingCount(DateTime.now())} 개',
                   style: TextStyle(
                     fontSize: 20,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
@@ -103,6 +107,7 @@ class HomeSmokingInfoWidget extends StatelessWidget {
                   '어제',
                   style: TextStyle(
                     fontSize: 12,
+                    fontWeight: FontWeight.w500,
                     color: appTheme.mainGreen,
                   ),
                 ),
@@ -113,6 +118,7 @@ class HomeSmokingInfoWidget extends StatelessWidget {
                   '${smokingRecordListViewModel.getSmokingCount(DateTime.now().subtract(Duration(days:1)))} 개',
                   style: TextStyle(
                     fontSize: 20,
+                    fontWeight: FontWeight.w500
                   ),
                 ),
               ],

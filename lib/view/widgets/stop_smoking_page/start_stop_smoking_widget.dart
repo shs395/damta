@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:damta/common/theme.dart';
 import 'package:provider/provider.dart';
 
-class StartStopSmokingPage extends StatefulWidget {
-  const StartStopSmokingPage({ Key? key }) : super(key: key);
+class StartStopSmokingWidget extends StatefulWidget {
+  const StartStopSmokingWidget({ Key? key }) : super(key: key);
 
   @override
-  _StartStopSmokingPageState createState() => _StartStopSmokingPageState();
+  _StartStopSmokingWidgetState createState() => _StartStopSmokingWidgetState();
 }
 
-class _StartStopSmokingPageState extends State<StartStopSmokingPage> {
+class _StartStopSmokingWidgetState extends State<StartStopSmokingWidget> {
   @override
   Widget build(BuildContext context) {
-    UserInfoViewModel _userInfoViewModel = Provider.of<UserInfoViewModel>(context);
+    UserInfoViewModel _userInfoViewModel = context.watch<UserInfoViewModel>();
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,

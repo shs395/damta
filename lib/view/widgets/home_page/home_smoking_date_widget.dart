@@ -18,11 +18,23 @@ class _HomeDateWidgetState extends State<HomeDateWidget> {
   List<Widget> getLastSmokingTimeWidget(DateTime? lastSmokingTime) {
     if(lastSmokingTime == null) {
       return [
-        Text('마지막 흡연'),
+        Text(
+          '마지막 흡연',
+          style: TextStyle(
+            fontSize: 12,
+            color: appTheme.mainGreen,
+            fontWeight: FontWeight.w500
+          ),
+        ),
         SizedBox(
           height: 2,
         ),
-        Text('흡연 기록이 없습니다'),
+        Text(
+          '흡연 기록이 없습니다',
+          style: TextStyle(
+            fontWeight: FontWeight.w500
+          ),
+        ),
       ];
     } else {
       return [
@@ -30,7 +42,8 @@ class _HomeDateWidgetState extends State<HomeDateWidget> {
           '마지막 흡연',
           style: TextStyle(
             fontSize: 12,
-            color: appTheme.mainGreen
+            color: appTheme.mainGreen,
+            fontWeight: FontWeight.w500
           ),
         ),
         SizedBox(
@@ -39,13 +52,15 @@ class _HomeDateWidgetState extends State<HomeDateWidget> {
         Text(
           '${DateFormat('yyyy년 MM월 dd일', 'ko_KR').format(lastSmokingTime)}',
           style: TextStyle(
-            fontSize: 15
+            fontSize: 15,
+            fontWeight: FontWeight.w500
           ),
         ),
         Text(
           '${DateFormat('a h시 m분', 'ko_KR').format(lastSmokingTime)}',
           style: TextStyle(
-            fontSize: 15
+            fontSize: 15,
+            fontWeight: FontWeight.w500
           ),
         )
       ];
@@ -58,9 +73,11 @@ class _HomeDateWidgetState extends State<HomeDateWidget> {
       return Text('');
     } else {
       return Text(
+        // '+3650일 4시간 35분 23초',
         '+${formatDuration(DateTime.now().difference(lastSmokingTime))}',
         style: TextStyle(
-          fontSize: 17
+          fontSize: 17,
+          fontWeight: FontWeight.w500
         ),  
       );
     }
@@ -102,6 +119,7 @@ class _HomeDateWidgetState extends State<HomeDateWidget> {
                   '경과',
                   style: TextStyle(
                     fontSize: 12,
+                    fontWeight: FontWeight.w500,
                     color: appTheme.mainGreen
                   ),
                 ),
