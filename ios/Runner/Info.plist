@@ -24,6 +24,11 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-6594029392934386~3962638656</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>https://open.kakao.com/o/gWeM6q0d</string>
+		<string>https://pf.kakao.com/_zBLab</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSBonjourServices</key>
@@ -200,11 +205,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<!-- 링크 -->
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-	<string>https://open.kakao.com/o/gWeM6q0d</string>
-	<string>https://pf.kakao.com/_zBLab</string>
-	</array>
 </dict>
 </plist>

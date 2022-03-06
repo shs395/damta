@@ -6,6 +6,7 @@ import 'package:damta/view/screens/statistics_page.dart';
 import 'package:damta/view/screens/stop_smoking_page.dart';
 import 'package:damta/view/widgets/calendar_view_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 
@@ -30,9 +31,43 @@ class _MainPageState extends State<MainPage> {
 
   late BannerAd _mainBannerAd;
   bool _isMainBannerAdReady = false;
+
+  int _counter = 0;
+  final channel = MethodChannel('com.damta');
+
+  Future<void> _incrementCounter() async {
+    print('watch click');
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+
+    // Send data to Native
+    await channel.invokeMethod(
+        "flutterToWatch", {"method": "sendCounterToNative", "data": _counter});
+  }
+
+  Future<void> _initFlutterChannel() async {
+    channel.setMethodCallHandler((call) async {
+      // Receive data from Native
+      switch (call.method) {
+        case "sendCounterToFlutter":
+          _counter = call.arguments["data"]["counter"];
+          _incrementCounter();
+          break;
+        default:
+          break;
+      }
+    });
+  }
   
   @override
   void initState() {
+    _initFlutterChannel();
     _mainBannerAd = BannerAd(
       adUnitId: AdHelper.homeBannerAdUnitId,
       request: AdRequest(),
