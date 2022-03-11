@@ -111,6 +111,7 @@ class _MainPageState extends State<MainPage> {
       switch (call.method) {
         case "addSmokingRecordToFlutter":
           _addSmokingRecord();
+          _sendUpdateToNative();
           break;
         case "requestUpdateToFlutter":
           _sendUpdateToNative();
