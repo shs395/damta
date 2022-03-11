@@ -14,6 +14,7 @@ import 'package:damta/view_model/smoking_record_list_view_model.dart';
 import 'package:damta/view_model/user_info_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:damta/common/theme.dart';
+import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:page_transition/page_transition.dart';
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    SmokingRecordListViewModel smokingRecordList = context.watch<SmokingRecordListViewModel>();
+    SmokingRecordListViewModel _smokingRecordListViewModel = context.watch<SmokingRecordListViewModel>();
     UserInfoViewModel _userInfoViewModel = context.watch<UserInfoViewModel>();
     return Scaffold(
       appBar: CustomAppbar('홈'),
@@ -104,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                               _userInfoViewModel.endStopSmoking();
-                                              smokingRecordList.addSmokingRecord(SmokingRecord(DateTime.now(), 1, ''));
+                                              _smokingRecordListViewModel.addSmokingRecord(SmokingRecord(DateTime.now(), 1, ''));
                                             },
                                           ),
                                         ],
@@ -112,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                                     },
                                   );
                                 } else {
-                                  smokingRecordList.addSmokingRecord(SmokingRecord(DateTime.now(), 1, ''));
+                                  _smokingRecordListViewModel.addSmokingRecord(SmokingRecord(DateTime.now(), 1, ''));
                                 }
                                 
                               }
@@ -139,30 +140,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                           flex: 1,
                         ),
-                        // Center(child: Text('s'),),
-                        // FloatingActionButton.large(
-                        //   child: Text('add now'),
-                        //   onPressed: () {
-                        //     smokingRecordList.addSmokingRecord(SmokingRecord(DateTime.now(), 1, ''));
-                        //   }
-                        // ),
-                        // FloatingActionButton(
-                        //   heroTag: 'good',
-                        //   child: Text('add someday'),
-                        //   onPressed: () async {
-                        //     await Navigator.push(
-                        //       context,
-                        //       PageTransition(
-                        //         type: PageTransitionType.bottomToTop,
-                        //         duration: Duration(milliseconds: 200),
-                        //         reverseDuration: Duration(milliseconds: 200),
-                        //         child: CreateSmokingRecord(),
-                        //       )
-                        //     );
-                        //   }
-                        // ),
                       ],
                     ),
+                    // 광고 대신
+                    Container(
+                      height: 50,
+                    )
                   ],
                 )
               )

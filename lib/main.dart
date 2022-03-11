@@ -9,16 +9,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:damta/common/theme.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
-  // Future<InitializationStatus> _initGoogleMobileAds() {
-  //   // TODO: Initialize Google Mobile Ads SDK
-  //   return MobileAds.instance.initialize();
-  // }
+  // 광고 시작
   // WidgetsFlutterBinding.ensureInitialized();
+  // MobileAds.instance.initialize();
+
+  // hive 시작
   await Hive.initFlutter();
   Hive.registerAdapter(SmokingRecordAdapter());
   Hive.registerAdapter(UserInfoAdapter());
@@ -57,6 +56,7 @@ Future<void> main() async {
 
 class DamTa extends StatelessWidget {
   const DamTa({ Key? key }) : super(key: key);
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   @override
   Widget build(BuildContext context) {

@@ -10,16 +10,22 @@ import WatchConnectivity
 
 class WatchViewModel: NSObject, ObservableObject {
     var session: WCSession
-    @Published var counter = 0
+    @Published var isStopSmoking = false
+    @Published var todaySmokingCount = 0;
+    @Published var stopSmokingDays = 0;
     
     // Add more cases if you have more receive method
     enum WatchReceiveMethod: String {
-        case sendCounterToNative
+        case sendIsStopSmokingToNative
+        case sendTodaySmokingCountToNative
+        case sendStopSmokingDaysToNative
+        // case sendUpdateToNative
     }
     
     // Add more cases if you have more sending method
     enum WatchSendMethod: String {
-        case sendCounterToFlutter
+        case addSmokingRecordToFlutter
+        case requestUpdateToFlutter
     }
     
     init(session: WCSession = .default) {
@@ -49,9 +55,23 @@ extension WatchViewModel: WCSessionDelegate {
             }
             
             switch enumMethod {
-            case .sendCounterToNative:
-                self.counter = (message["data"] as? Int) ?? 0
+            case .sendIsStopSmokingToNative:
+                self.isStopSmoking = (message["data"] as? Bool) ?? false
+
+            case .sendTodaySmokingCountToNative:
+                self.todaySmokingCount = (message["data"] as? Int) ?? 0
+
+            case .sendStopSmokingDaysToNative:
+                self.stopSmokingDays = (message["data"] as? Int) ?? 0
+
+            // case .sendUpdateToNative:
+            //     self.isStopSmoking = (message["isStopSmoking"] as? Bool) ?? false
+            //     self.todaySmokingCount = (message["todaySmokingCount"] as? Int) ?? 0
+            //     self.stopSmokingDays = (message["stopSmokingDays"] as? Int) ?? 0
+
             }
+
+            
         }
     }
     

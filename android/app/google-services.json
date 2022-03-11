@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "964702695551",
+    "project_id": "damta-ios",
+    "storage_bucket": "damta-ios.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964702695551:android:4c0485b40aed3178398f4a",
+        "android_client_info": {
+          "package_name": "com.damta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964702695551-1m9ro54buep9o9kmbo3i0r9n87dj4ujb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Rrem0HM52Y0qd3iFpY6MjtOdGaRGQDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964702695551-1m9ro54buep9o9kmbo3i0r9n87dj4ujb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "964702695551-l7d81srer3pl5u4ocdoohkb0l0njmfig.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.damta",
+                "app_store_id": "1610315100"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
