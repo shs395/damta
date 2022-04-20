@@ -14,8 +14,8 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 Future<void> main() async {
   // 광고 시작
-  // WidgetsFlutterBinding.ensureInitialized();
-  // MobileAds.instance.initialize();
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
 
   // hive 시작
   await Hive.initFlutter();

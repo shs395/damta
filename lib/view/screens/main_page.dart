@@ -135,31 +135,30 @@ class _MainPageState extends State<MainPage> {
       
 
     // 광고 로드
-    // _mainBannerAd = BannerAd(
-    //   // adUnitId: AdHelper.homeBannerAdUnitId,
-    //   adUnitId: AdHelper.calendarBannerAdUnitId,
-    //   // adUnitId: AdHelper.testBannerAdUnitId,
-    //   request: AdRequest(),
-    //   size: AdSize.banner,
-    //   listener: BannerAdListener(
-    //     onAdLoaded: (_) {
-    //       setState(() {
-    //         _isMainBannerAdReady = true;
-    //       });
-    //     },
-    //     onAdFailedToLoad: (ad, err) {
-    //       print('Failed to load a banner ad: ${err.message}');
-    //       print(err.responseInfo);
-    //       print(err.code);
-    //       print(err.domain);
-    //       print(err.message);
-    //       _isMainBannerAdReady = false;
-    //       ad.dispose();
-    //     },
-    //   ),
-    // );
+    _mainBannerAd = BannerAd(
+      adUnitId: AdHelper.homeBannerAdUnitId,
+      // adUnitId: AdHelper.testBannerAdUnitId,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            _isMainBannerAdReady = true;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          print('Failed to load a banner ad: ${err.message}');
+          print(err.responseInfo);
+          print(err.code);
+          print(err.domain);
+          print(err.message);
+          _isMainBannerAdReady = false;
+          ad.dispose();
+        },
+      ),
+    );
 
-    // _mainBannerAd.load();
+    _mainBannerAd.load();
   }
 
   @override
@@ -170,6 +169,7 @@ class _MainPageState extends State<MainPage> {
       _sendIsStopSmokingToNative();
       _sendTodaySmokingCountToNative();
     }
+      print(_isMainBannerAdReady);
     return Scaffold(
       backgroundColor: appTheme.backgroundColor,
       body: Padding(
@@ -181,6 +181,22 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             // 광고
+            _screenIndex == 0 ? (_isMainBannerAdReady == true) ? Container(
+              color: appTheme.backgroundColor,
+              width: _mainBannerAd.size.width.toDouble(),
+              height: _mainBannerAd.size.height.toDouble(),
+              // width: 320,
+              // height: 50,
+              child: AdWidget(ad: _mainBannerAd),
+            ) : Container(height: 50,) : Container() 
+            // _screenIndex == 0 ? Container(
+            //   color: appTheme.backgroundColor,
+            //   width: _mainBannerAd.size.width.toDouble(),
+            //   height: _mainBannerAd.size.height.toDouble(),
+            //   // width: 320,
+            //   // height: 50,
+            //   child: AdWidget(ad: _mainBannerAd),
+            // ) : Container(),     
             // Container(
             //   color: appTheme.backgroundColor,
             //   width: _mainBannerAd.size.width.toDouble(),
@@ -188,7 +204,7 @@ class _MainPageState extends State<MainPage> {
             //   // width: 320,
             //   // height: 50,
             //   child: AdWidget(ad: _mainBannerAd),
-            // )
+            // )        
           ],
         )
       ),

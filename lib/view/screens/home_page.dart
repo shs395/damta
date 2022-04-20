@@ -143,9 +143,9 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                     // 광고 대신
-                    Container(
-                      height: 50,
-                    )
+                    // Container(
+                    //   height: 50,
+                    // )
                   ],
                 )
               )
