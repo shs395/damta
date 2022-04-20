@@ -112,6 +112,9 @@ class _MainPageState extends State<MainPage> {
         case "addSmokingRecordToFlutter":
           _addSmokingRecord();
           _sendUpdateToNative();
+          // _addSmokingRecord().then((_) => 
+          //   _sendUpdateToNative()
+          // );
           break;
         case "requestUpdateToFlutter":
           _sendUpdateToNative();
