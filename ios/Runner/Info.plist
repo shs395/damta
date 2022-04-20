@@ -23,7 +23,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<string>ca-app-pub-6594029392934386~3962638656</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>https://open.kakao.com/o/gWeM6q0d</string>
