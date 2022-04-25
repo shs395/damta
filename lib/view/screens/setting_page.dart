@@ -298,7 +298,7 @@ class SettingPage extends StatelessWidget {
                       ),
                       child: LicensePage(
                         applicationName: '담타 - 담배, 타임!',
-                        applicationVersion: 'ver 1.0.5'
+                        applicationVersion: 'ver 1.0.6'
                       ),
                     ),
                   ),
@@ -310,7 +310,7 @@ class SettingPage extends StatelessWidget {
                 '앱 버전', 
               ),
               trailing: Text(
-                '1.0.5',
+                '1.0.6',
               ),
             ),
             

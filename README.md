@@ -50,3 +50,6 @@
 - 오픈소스 라이센스 추가
 - 광고 추가
 - 애플워치 오류 수정
+
+### 1.0.6 
+- ios googleservice-info.plist 수정
